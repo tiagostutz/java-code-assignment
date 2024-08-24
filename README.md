@@ -44,19 +44,24 @@ When you're done iterating in developer mode, you can run the application as a c
 
 First compile it:
 
-> ./mvnw package
+```sh
+./mvnw package
+```
 
 Next we need to make sure you have a PostgreSQL instance running (Quarkus automatically starts one for dev and test mode). To set up a PostgreSQL database with Docker:
 
-> docker run -it --rm=true --name quarkus_test -e POSTGRES_USER=quarkus_test -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test -p 15432:5432 postgres:13.3
+```sh
+docker run -it --rm=true --name quarkus_test -e POSTGRES_USER=quarkus_test -e POSTGRES_PASSWORD=quarkus_test -e POSTGRES_DB=quarkus_test -p 15432:5432 postgres:13.3
+```
 
 Connection properties for the Agroal datasource are defined in the standard Quarkus configuration file,
 `src/main/resources/application.properties`.
 
 Then run it:
 
-> java -jar ./target/quarkus-app/quarkus-run.jar
-
+```sh
+java -jar ./target/quarkus-app/quarkus-run.jar
+```
     Have a look at how fast it boots.
     Or measure total native memory consumption...
 
