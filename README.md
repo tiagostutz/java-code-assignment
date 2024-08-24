@@ -16,9 +16,11 @@ Make sure that `JAVA_HOME` environment variables has been set, and that a JDK 17
 
 ## Building the demo
 
-Launch the Maven build on the checked out sources of this demo:
+Execute the Maven build on the root of the project:
 
-> ./mvnw package
+```sh
+./mvnw package
+```
 
 ## Running the demo
 
@@ -27,7 +29,9 @@ Launch the Maven build on the checked out sources of this demo:
 The Maven Quarkus plugin provides a development mode that supports
 live coding. To try this out:
 
-> ./mvnw quarkus:dev
+```sh
+./mvnw quarkus:dev
+```
 
 In this mode you can make changes to the code and have the changes immediately applied, by just refreshing your browser.
 
