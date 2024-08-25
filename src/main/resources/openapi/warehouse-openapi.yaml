@@ -52,6 +52,20 @@ paths:
                 $ref: '#/components/schemas/Warehouse'
         '404':
           description: Warehouse unit not found
+    delete:
+      summary: Archive a warehouse unit by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the warehouse unit to archive
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Warehouse unit archived
+        '404':
+          description: Warehouse unit not found
 
 components:
   schemas:

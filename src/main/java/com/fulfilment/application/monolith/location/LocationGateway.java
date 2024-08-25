@@ -21,7 +21,7 @@ public class LocationGateway implements LocationResolver {
   }
 
   @Override
-  public List<Location> resolveByIdentifier(String identifier) {
+  public Location resolveByIdentifier(String identifier) {
     // TODO implement this method
     throw new UnsupportedOperationException("Unimplemented method 'resolveByIdentifier'");
   }

@@ -20,7 +20,7 @@ import jakarta.ws.rs.ext.Provider;
 import java.util.List;
 import org.jboss.logging.Logger;
 
-@Path("products")
+@Path("product")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")

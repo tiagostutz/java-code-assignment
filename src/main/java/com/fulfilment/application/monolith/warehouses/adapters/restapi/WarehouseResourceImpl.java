@@ -9,8 +9,7 @@ public class WarehouseResourceImpl implements WarehouseResource {
 
   @Override
   public List<Warehouse> listAllWarehousesUnits() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'listAllWarehousesUnits'");
+    return List.of();
   }
 
   @Override
@@ -23,5 +22,11 @@ public class WarehouseResourceImpl implements WarehouseResource {
   public Warehouse getAWarehouseUnitByID(String id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getAWarehouseUnitByID'");
+  }
+
+  @Override
+  public void archiveAWarehouseUnitByID(String id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'archiveAWarehouseUnitByID'");
   }
 }

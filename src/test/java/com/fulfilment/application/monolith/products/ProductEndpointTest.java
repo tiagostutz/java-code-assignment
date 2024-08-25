@@ -1,4 +1,4 @@
-package com.inventorix.hibernate.orm.panache;
+package com.fulfilment.application.monolith.products;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -11,16 +11,9 @@ import org.junit.jupiter.api.Test;
 public class ProductEndpointTest {
 
   @Test
-  public void testStores() {
-    performTest("stores");
-  }
+  public void testCrudProduct() {
+    final String path = "product";
 
-  @Test
-  public void testProduct() {
-    performTest("products");
-  }
-
-  private void performTest(String path) {
     // List all, should have all 3 products the database has initially:
     given()
         .when()
