@@ -1,4 +1,4 @@
-package com.inventorix.warehouse.application.monolith.repository;
+package com.warehouse.application.monolith.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;

@@ -1,8 +1,8 @@
-package com.inventorix.warehouse.application.monolith.activerecord;
+package com.warehouse.application.monolith.activerecord;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.inventorix.warehouse.application.monolith.repository.Product;
+import com.warehouse.application.monolith.repository.Product;
 import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

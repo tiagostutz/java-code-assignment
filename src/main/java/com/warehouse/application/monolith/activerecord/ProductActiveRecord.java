@@ -1,4 +1,4 @@
-package com.inventorix.warehouse.application.monolith.activerecord;
+package com.warehouse.application.monolith.activerecord;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Cacheable;

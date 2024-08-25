@@ -1,4 +1,4 @@
-package com.inventorix.warehouse.application.monolith.repository;
+package com.warehouse.application.monolith.repository;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
