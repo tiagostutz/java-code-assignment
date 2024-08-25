@@ -106,6 +106,6 @@ components:
           type: number
           format: float
           example: 19.99
-        quantity:
+        stock:
           type: integer
           example: 100
