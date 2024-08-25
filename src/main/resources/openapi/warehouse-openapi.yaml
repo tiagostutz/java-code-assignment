@@ -5,107 +5,68 @@ info:
   version: 1.0.0
 
 paths:
-  /products:
+  /warehouse:
     get:
-      summary: List all products
+      summary: List all warehouses units
       responses:
         '200':
-          description: A list of products
+          description: A list of warehouse units
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Product'
+                  $ref: '#/components/schemas/Warehouse'
     post:
-      summary: Create a new product
+      summary: Create a new warehouse unit
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Product'
+              $ref: '#/components/schemas/Warehouse'
       responses:
         '201':
-          description: Product created
+          description: Warehouse unit created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: '#/components/schemas/Warehouse'
 
-  /products/{id}:
+  /warehouse/{id}:
     get:
-      summary: Retrieve a specific product
+      summary: Get a warehouse unit by ID
       parameters:
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          description: ID of the warehouse unit to get
           schema:
             type: string
       responses:
         '200':
-          description: A single product
+          description: Warehouse unit found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Product'
+                $ref: '#/components/schemas/Warehouse'
         '404':
-          description: Product not found
-    put:
-      summary: Update a specific product
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Product'
-      responses:
-        '200':
-          description: Product updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Product'
-        '404':
-          description: Product not found
-    delete:
-      summary: Delete a specific product
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Product deleted
-        '404':
-          description: Product not found
+          description: Warehouse unit not found
 
 components:
   schemas:
-    Product:
+    Warehouse:
       type: object
       properties:
         id:
           type: string
-          example: "123"
-        name:
+          example: "456"
+        location:
           type: string
-          example: "Widget"
-        description:
-          type: string
-          example: "A useful widget"
-        price:
-          type: number
-          format: float
-          example: 19.99
-        stock:
+          example: "Aisle 1, Shelf 2"
+        capacity:
           type: integer
           example: 100
+        stock:
+          type: integer
+          example: 50

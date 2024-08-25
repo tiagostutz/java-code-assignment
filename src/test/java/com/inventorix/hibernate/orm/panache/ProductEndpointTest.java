@@ -12,12 +12,12 @@ public class ProductEndpointTest {
 
   @Test
   public void testProductActiveRecord() {
-    performTest("/activerecord/products");
+    performTest("stores");
   }
 
   @Test
   public void testProductRepository() {
-    performTest("/repository/products");
+    performTest("products");
   }
 
   private void performTest(String path) {

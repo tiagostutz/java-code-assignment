@@ -20,7 +20,7 @@ import jakarta.ws.rs.ext.Provider;
 import java.util.List;
 import org.jboss.logging.Logger;
 
-@Path("repository/products")
+@Path("products")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")
@@ -71,8 +71,11 @@ public class ProductRepositoryResource {
     }
 
     entity.name = product.name;
+    entity.description = product.description;
+    entity.price = product.price;
+    entity.stock = product.stock;
 
-    return entity;
+    return update(id, entity);
   }
 
   @DELETE
