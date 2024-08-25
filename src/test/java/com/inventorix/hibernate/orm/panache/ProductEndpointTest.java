@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 public class ProductEndpointTest {
 
   @Test
-  public void testProductActiveRecord() {
+  public void testStores() {
     performTest("stores");
   }
 
   @Test
-  public void testProductRepository() {
+  public void testProduct() {
     performTest("products");
   }
 

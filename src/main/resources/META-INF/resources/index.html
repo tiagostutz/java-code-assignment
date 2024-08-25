@@ -46,12 +46,12 @@
           if ($scope.form.id == -1) {
             //Id is absent so add products - POST operation
             method = "POST";
-            url = '/activerecord/products';
+            url = '/products';
             data.name = $scope.form.name;
           } else {
             //If Id is present, it's edit operation - PUT operation
             method = "PUT";
-            url = '/activerecord/products/' + $scope.form.id;
+            url = '/products/' + $scope.form.id;
             data.name = $scope.form.name;
           }
 
@@ -69,7 +69,7 @@
         $scope.remove = function (product) {
           $http({
             method: 'DELETE',
-            url: '/activerecord/products/' + product.id
+            url: '/products/' + product.id
           }).then(_success, _error);
         };
 
@@ -84,7 +84,7 @@
         function _refreshPageData() {
           $http({
             method: 'GET',
-            url: '/activerecord/products'
+            url: '/products'
           }).then(function successCallback(response) {
             $scope.products = response.data;
           }, function errorCallback(response) {

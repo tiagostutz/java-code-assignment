@@ -1,4 +1,4 @@
-package com.warehouse.application.monolith.activerecord;
+package com.fulfilment.application.monolith.products;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,7 +9,6 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -21,81 +20,62 @@ import jakarta.ws.rs.ext.Provider;
 import java.util.List;
 import org.jboss.logging.Logger;
 
-@Path("stores")
+@Path("products")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")
-public class StoreResource {
+public class ProductResource {
 
-  private static final Logger LOGGER = Logger.getLogger(StoreResource.class.getName());
+  @Inject ProductRepository productRepository;
+
+  private static final Logger LOGGER = Logger.getLogger(ProductResource.class.getName());
 
   @GET
-  public List<StoreActiveRecord> get() {
-    return StoreActiveRecord.listAll(Sort.by("name"));
+  public List<Product> get() {
+    return productRepository.listAll(Sort.by("name"));
   }
 
   @GET
   @Path("{id}")
-  public StoreActiveRecord getSingle(Long id) {
-    StoreActiveRecord entity = StoreActiveRecord.findById(id);
+  public Product getSingle(Long id) {
+    Product entity = productRepository.findById(id);
     if (entity == null) {
-      throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
+      throw new WebApplicationException("Product with id of " + id + " does not exist.", 404);
     }
     return entity;
   }
 
   @POST
   @Transactional
-  public Response create(StoreActiveRecord store) {
-    if (store.id != null) {
+  public Response create(Product product) {
+    if (product.id != null) {
       throw new WebApplicationException("Id was invalidly set on request.", 422);
     }
 
-    store.persist();
-    return Response.ok(store).status(201).build();
+    productRepository.persist(product);
+    return Response.ok(product).status(201).build();
   }
 
   @PUT
   @Path("{id}")
   @Transactional
-  public StoreActiveRecord update(Long id, StoreActiveRecord updatedStore) {
-    if (updatedStore.name == null) {
-      throw new WebApplicationException("Store Name was not set on request.", 422);
+  public Product update(Long id, Product product) {
+    if (product.name == null) {
+      throw new WebApplicationException("Product Name was not set on request.", 422);
     }
 
-    StoreActiveRecord entity = StoreActiveRecord.findById(id);
+    Product entity = productRepository.findById(id);
 
     if (entity == null) {
-      throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
+      throw new WebApplicationException("Product with id of " + id + " does not exist.", 404);
     }
 
-    entity.name = updatedStore.name;
-    entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
+    entity.name = product.name;
+    entity.description = product.description;
+    entity.price = product.price;
+    entity.stock = product.stock;
 
-    return entity;
-  }
-
-  @PATCH
-  @Path("{id}")
-  @Transactional
-  public StoreActiveRecord patch(Long id, StoreActiveRecord updatedStore) {
-    if (updatedStore.name == null) {
-      throw new WebApplicationException("Store Name was not set on request.", 422);
-    }
-
-    StoreActiveRecord entity = StoreActiveRecord.findById(id);
-
-    if (entity == null) {
-      throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
-    }
-
-    if (entity.name != null) {
-      entity.name = updatedStore.name;
-    }
-
-    if (entity.quantityProductsInStock != 0) {
-      entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
-    }
+    productRepository.persist(entity);
 
     return entity;
   }
@@ -104,11 +84,11 @@ public class StoreResource {
   @Path("{id}")
   @Transactional
   public Response delete(Long id) {
-    StoreActiveRecord entity = StoreActiveRecord.findById(id);
+    Product entity = productRepository.findById(id);
     if (entity == null) {
-      throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
+      throw new WebApplicationException("Product with id of " + id + " does not exist.", 404);
     }
-    entity.delete();
+    productRepository.delete(entity);
     return Response.status(204).build();
   }
 

@@ -1,4 +1,4 @@
-package com.warehouse.application.monolith.repository;
+package com.fulfilment.application.monolith.products;
 
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
