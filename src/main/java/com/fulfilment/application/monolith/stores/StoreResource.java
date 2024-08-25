@@ -27,6 +27,8 @@ import org.jboss.logging.Logger;
 @Consumes("application/json")
 public class StoreResource {
 
+  @Inject LegacyStoreManagerGateway legacyStoreManagerGateway;
+
   private static final Logger LOGGER = Logger.getLogger(StoreResource.class.getName());
 
   @GET
@@ -52,6 +54,9 @@ public class StoreResource {
     }
 
     store.persist();
+
+    legacyStoreManagerGateway.createStoreOnLegacySystem(store);
+
     return Response.ok(store).status(201).build();
   }
 
@@ -71,6 +76,8 @@ public class StoreResource {
 
     entity.name = updatedStore.name;
     entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
+
+    legacyStoreManagerGateway.updateStoreOnLegacySystem(updatedStore);
 
     return entity;
   }
@@ -96,6 +103,8 @@ public class StoreResource {
     if (entity.quantityProductsInStock != 0) {
       entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
     }
+
+    legacyStoreManagerGateway.updateStoreOnLegacySystem(updatedStore);
 
     return entity;
   }
