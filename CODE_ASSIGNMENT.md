@@ -22,9 +22,9 @@ On the class `LocationGateway`, implement the method `resolveByIdentifier`. We a
 
 > this code is located under package `com.fulfilment.application.monolith.stores`
 
-Adjust the `StoreResource` operations to make sure that the `LegacyStoreManagerGateway` calls that happens there takes place after the changes on the **are commited to the database**, to guarantee the downstream legacy system is receiving a confirmed data from us.
+Adjust the `StoreResource` operations to make sure that the `LegacyStoreManagerGateway` calls that happens there take place after the changes **are commited to the database**, to guarantee that the downstream legacy system is receiving a confirmed data from us.
 
-If you check the `StoreResource` class and methods, you notice that it uses `LegacyStoreManagerGateway` instance. This is simulating the integration with a legacy system with which we would keep syncing the `Stores` register handled on our system. Although the initial implementation is working properly, we need a implementation that **guarantees** that the changes on the `Store` entity is propagated only after it is effectively stored on database.
+If you check the `StoreResource` class and methods, you'll notice that it uses `LegacyStoreManagerGateway` instance. This is simulating an integration with a legacy system with which we are syncing the `Stores` register handled by our system. Although the initial implementation is working properly, we need an implementation that **guarantees** that the change to the `Store` entity is propagated only after it is effectively stored in our database.
 
 ### 3. Warehouse
 
@@ -32,15 +32,15 @@ If you check the `StoreResource` class and methods, you notice that it uses `Leg
 
 #### Implement Warehouse Creation and Replacement logic
 
-Locate and implement the use cases for Creating, Replacing and Archiving a Warehouse. The validations and constraints that apply are the following:
+Locate and implement the use cases for Creating, Replacing and Archiving a Warehouse. Following validations and constraints should be applied:
 
 **Business Unit Code Verification**
 
-Ensure the specified business unit code for the warehouse doesn't already exists.
+Ensure that the specified business unit code for the warehouse doesn't already exists.
 
 **Location Validation**
 
-Confirm the warehouse location is valid, meaning it must be an existing valid location.
+Confirm that the warehouse location is valid, meaning it must be an existing valid location.
 
 **Warehouse Creation Feasibility**
 
@@ -66,8 +66,8 @@ Implement the feature of associating `Warehouses` as fullfilment units of certai
 
 Constraints:
 
-1. Each `Product` can be fulfilled by maximum of 2 different `Warehouses` per `Store`
+1. Each `Product` can be fulfilled by a maximum of 2 different `Warehouses` per `Store`
 
-2. Each `Store` can be fulfilled by maximum of 3 different `Warehouses`
+2. Each `Store` can be fulfilled by a maximum of 3 different `Warehouses`
 
-3. Each `Warehouse` can store maxium 5 types of `Products`
+3. Each `Warehouse` can store maximally 5 types of `Products`
