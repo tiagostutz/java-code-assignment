@@ -1,8 +1,14 @@
 # Java Code Assignment
 
+## About the assignment
+
+You will find the tasks of this assignment on [CODE_ASSIGNMENT](CODE_ASSIGNMENT.md) file
+
+## About the code base
+
 This is based on https://github.com/quarkusio/quarkus-quickstarts
 
-## Requirements
+### Requirements
 
 To compile and run this demo you will need:
 
