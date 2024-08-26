@@ -1,6 +1,6 @@
 # Briefing
 
-This application is a very simplified implementation of a Warehouse units management system.
+This application is a very simplified implementation of a Warehouse colocation management system.
 
 Basically, we have 4 entities:
 * `Location` represents a geographical place, a city

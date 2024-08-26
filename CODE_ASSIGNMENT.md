@@ -2,6 +2,8 @@
 
 Your assignment is to implement some missing pieces on this code base and answer some small questions about possible changes and improvements on code. Those implementations are listed below.
 
+Usually, this assignment takes 1h-2h to be completed by a senior, but with the help of an AI assistant, you could do it even faster 🤖
+
 Some parts of the code contain methods that are already defined but currently throw `UnsupportedOperationException`. Other methods are implemented but incomplete, and there may be some missing pieces. Your goal is to fill in all these gaps, ensuring the code works correctly with all the specified endpoints, while respecting the constraints and validations outlined in this file.
 
 Also, just a minimum set of tests are present, feel free to bring more as well to craft the tests related to the implementations you will work on.
@@ -14,7 +16,7 @@ Also, just a minimum set of tests are present, feel free to bring more as well t
 
 > this code is located under package `com.fulfilment.application.monolith.location`
 
-On class `LocationGateway` implement the method `resolveByIdentifier`. We advise you to start by this one as this is the most simple and is a pre-requirement for the next tasks. This is just a warm-up task 😃
+On the class `LocationGateway`, implement the method `resolveByIdentifier`. We advise you to start by this one as this is the most simple and is a pre-requirement for the next tasks. This is just a warm-up task 😃
 
 ### 2. Store
 
