@@ -8,19 +8,21 @@ Also, just a minimum set of tests are present, feel free to bring more as well t
 
 **Before starting the tasks, it is important to [read the brief overview](BRIEFING.md) that provides essential information about the domain, entities, business rules, and other relevant details.**
 
-## Expected Implementations
+## Tasks
 
 ### 1. Location
 
 > this code is located under package `com.fulfilment.application.monolith.location`
 
-There's only one simple implementation to be done on class `LocationGateway`. It is the method `resolveByIdentifier`. We advise you to start by this one as this is the most simple and is a pre-requirement for the next tasks.
+On class `LocationGateway` implement the method `resolveByIdentifier`. We advise you to start by this one as this is the most simple and is a pre-requirement for the next tasks. This is just a warm-up task 😃
 
 ### 2. Store
 
 > this code is located under package `com.fulfilment.application.monolith.stores`
 
-There's only one implementation here, but not as simple as the previous one. If you check the `StoreResource` class and methods, you notice that the classe `@Inject` a `LegacyStoreManagerGateway` instance and use it on every method. This simulating the integration with a legacy system with which we would keep syncing the `Stores` register handled on our system. Although the "happy" flow is working properly, we need to **make sure** that the created `Store` is sent to the legacy system only **after it is commited to the database**, to guarantee the downstream legacy system is receiving a confirmed data from us.
+Adjust the `StoreResource` operations to make sure that the `LegacyStoreManagerGateway` calls that happens there takes place after the changes on the **are commited to the database**, to guarantee the downstream legacy system is receiving a confirmed data from us.
+
+If you check the `StoreResource` class and methods, you notice that it uses `LegacyStoreManagerGateway` instance. This is simulating the integration with a legacy system with which we would keep syncing the `Stores` register handled on our system. Although the initial implementation is working properly, we need a implementation that **guarantees** that the changes on the `Store` entity is propagated only after it is effectively stored on database.
 
 ### 3. Warehouse
 
