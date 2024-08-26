@@ -4,9 +4,11 @@ import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "warehouse")
 @Cacheable
 public class DbWarehouse {
 
@@ -20,7 +22,7 @@ public class DbWarehouse {
 
   public Integer stock;
 
-  public LocalDateTime creationAt;
+  public LocalDateTime createdAt;
 
   public LocalDateTime archivedAt;
 
