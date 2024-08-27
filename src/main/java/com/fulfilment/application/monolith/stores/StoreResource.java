@@ -29,6 +29,8 @@ public class StoreResource {
 
   @Inject LegacyStoreManagerGateway legacyStoreManagerGateway;
 
+  @Inject StoreService storeService;
+
   private static final Logger LOGGER = Logger.getLogger(StoreResource.class.getName());
 
   @GET
@@ -53,33 +55,30 @@ public class StoreResource {
       throw new WebApplicationException("Id was invalidly set on request.", 422);
     }
 
-    store.persist();
+    var createdStore = storeService.create(store);
 
-    legacyStoreManagerGateway.createStoreOnLegacySystem(store);
+    legacyStoreManagerGateway.createStoreOnLegacySystem(createdStore);
 
-    return Response.ok(store).status(201).build();
+    return Response.ok(createdStore).status(201).build();
   }
 
   @PUT
   @Path("{id}")
   @Transactional
   public Store update(Long id, Store updatedStore) {
+
     if (updatedStore.name == null) {
       throw new WebApplicationException("Store Name was not set on request.", 422);
     }
 
-    Store entity = Store.findById(id);
-
-    if (entity == null) {
+    var persistedStore = storeService.update(id, updatedStore);
+    if (persistedStore == null) {
       throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
     }
 
-    entity.name = updatedStore.name;
-    entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
+    legacyStoreManagerGateway.updateStoreOnLegacySystem(persistedStore);
 
-    legacyStoreManagerGateway.updateStoreOnLegacySystem(updatedStore);
-
-    return entity;
+    return persistedStore;
   }
 
   @PATCH
@@ -90,34 +89,25 @@ public class StoreResource {
       throw new WebApplicationException("Store Name was not set on request.", 422);
     }
 
-    Store entity = Store.findById(id);
-
-    if (entity == null) {
+    var persistedStore = storeService.patch(id, updatedStore);
+    if (persistedStore == null) {
       throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
-    }
-
-    if (entity.name != null) {
-      entity.name = updatedStore.name;
-    }
-
-    if (entity.quantityProductsInStock != 0) {
-      entity.quantityProductsInStock = updatedStore.quantityProductsInStock;
     }
 
     legacyStoreManagerGateway.updateStoreOnLegacySystem(updatedStore);
 
-    return entity;
+    return persistedStore;
   }
 
   @DELETE
   @Path("{id}")
   @Transactional
   public Response delete(Long id) {
-    Store entity = Store.findById(id);
-    if (entity == null) {
+    var store = storeService.delete(id);
+    if (store == null) {
       throw new WebApplicationException("Store with id of " + id + " does not exist.", 404);
     }
-    entity.delete();
+
     return Response.status(204).build();
   }
 
