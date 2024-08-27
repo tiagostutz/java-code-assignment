@@ -1,6 +1,6 @@
 # Code Assignment
 
-Your assignment is to implement some missing pieces on this code base and answer some small questions about possible changes and improvements on code. Those implementations are listed below.
+Your assignment is to implement some missing pieces on this code base and answer some small questions about possible changes and improvements on code. Those tasks are listed below. The questions can be answered in the [QUESTIONS](QUESTIONS.md) file.
 
 Usually, this assignment takes 1h-2h to be completed by a senior, but with the help of an AI assistant, you could do it even faster 🤖
 

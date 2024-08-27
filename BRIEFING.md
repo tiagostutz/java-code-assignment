@@ -4,7 +4,7 @@ This application is a very simplified implementation of a Warehouse colocation m
 
 Basically, we have 4 entities:
 * `Location` represents a geographical place, a city
-* `Store` represents a place where `Products` are sold
+* `Store` represents a physical store, where `Products` are stored and sold
 * `Warehouse` represents a place where `Products` are kept to eventually be distributed to the `Store`
 * `Product` represent the goods actually sold to customers in the `Store`
 
