@@ -9,16 +9,23 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class CreateWarehouseUseCase implements CreateWarehouseOperation {
 
   private final WarehouseStore warehouseStore;
+  private final WarehouseValidator warehouseValidator;
 
-  public CreateWarehouseUseCase(WarehouseStore warehouseStore) {
+  public CreateWarehouseUseCase(
+      WarehouseStore warehouseStore, WarehouseValidator warehouseValidator) {
     this.warehouseStore = warehouseStore;
+    this.warehouseValidator = warehouseValidator;
   }
 
   @Override
-  public void create(Warehouse warehouse) {
+  public Warehouse create(Warehouse warehouse) throws DomainValidationException {
     // validate the warehouse basic information
+    var occurences = warehouseValidator.validate(warehouse);
+    if (!occurences.isEmpty()) {
+      throw new DomainValidationException(occurences);
+    }
 
     // if all went well, create the warehouse
-    warehouseStore.create(warehouse);
+    return warehouseStore.create(warehouse);
   }
 }

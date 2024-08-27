@@ -10,19 +10,19 @@ import java.util.List;
 public class WarehouseRepository implements WarehouseStore, PanacheRepository<DbWarehouse> {
 
   @Override
-  public void create(Warehouse warehouse) {
+  public Warehouse create(Warehouse warehouse) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'create'");
   }
 
   @Override
-  public void update(Warehouse warehouse) {
+  public Warehouse update(Warehouse warehouse) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'replace'");
   }
 
   @Override
-  public void remove(Warehouse warehouse) {
+  public Warehouse remove(Warehouse warehouse) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'remove'");
   }
