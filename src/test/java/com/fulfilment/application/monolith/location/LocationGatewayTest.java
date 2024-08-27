@@ -20,17 +20,14 @@ public class LocationGatewayTest {
   }
 
   @Test
-  public void testWhenResolveNonExistingLocationShouldThrowException() {
+  public void testWhenResolveNonExistingLocationShouldReturnNull() {
     // given
     LocationGateway locationGateway = new LocationGateway();
 
     // when
-    IllegalArgumentException exception =
-        org.junit.jupiter.api.Assertions.assertThrows(
-            IllegalArgumentException.class,
-            () -> locationGateway.resolveByIdentifier("NON-EXISTING"));
+    Location location = locationGateway.resolveByIdentifier("ZWOLLE-003");
 
     // then
-    assertEquals(exception.getMessage(), "Location not found");
+    assertEquals(location, null);
   }
 }

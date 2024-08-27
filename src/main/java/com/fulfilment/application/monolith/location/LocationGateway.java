@@ -25,6 +25,6 @@ public class LocationGateway implements LocationResolver {
     return locations.stream()
         .filter(location -> location.identification.equals(identifier))
         .findFirst()
-        .orElseThrow(() -> new IllegalArgumentException("Location not found"));
+        .orElse(null);
   }
 }
