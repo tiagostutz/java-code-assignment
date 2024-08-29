@@ -29,4 +29,12 @@ public class WarehouseResourceImpl implements WarehouseResource {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'archiveAWarehouseUnitByID'");
   }
+
+  @Override
+  public Warehouse replaceTheCurrentActiveWarehouse(
+      String businessUnitCode, @NotNull Warehouse data) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException(
+        "Unimplemented method 'replaceTheCurrentActiveWarehouse'");
+  }
 }
