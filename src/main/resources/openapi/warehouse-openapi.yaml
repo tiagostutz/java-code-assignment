@@ -106,13 +106,12 @@ components:
         id:
           type: string
           example: "456"
-        
         businessUnitCode:
           type: string
-          example: "MWH.001, MWH.002"
+          example: "MWH.001"
         location:
           type: string
-          example: "ZWOLLE-001, AMSTERDAM-002"
+          example: "AMSTERDAM-001"
         capacity:
           type: integer
           example: 100
