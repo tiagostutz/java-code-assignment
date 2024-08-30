@@ -21,7 +21,7 @@ import jakarta.ws.rs.ext.Provider;
 import java.util.List;
 import org.jboss.logging.Logger;
 
-@Path("stores")
+@Path("store")
 @ApplicationScoped
 @Produces("application/json")
 @Consumes("application/json")
