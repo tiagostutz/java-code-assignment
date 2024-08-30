@@ -12,13 +12,13 @@ Also, just a minimum set of tests are present, feel free to bring more as well t
 
 ## Tasks
 
-### 1. Location
+### 1. Location (Must have)
 
 > this code is located under package `com.fulfilment.application.monolith.location`
 
 On the class `LocationGateway`, implement the method `resolveByIdentifier`. We advise you to start by this one as this is the most simple and is a pre-requirement for the next tasks. This is just a warm-up task 😃
 
-### 2. Store
+### 2. Store (Must have)
 
 > this code is located under package `com.fulfilment.application.monolith.stores`
 
@@ -30,9 +30,11 @@ If you check the `StoreResource` class and methods, you'll notice that it uses `
 
 > this code is located under package `com.fulfilment.application.monolith.warehouse`
 
-#### Implement Warehouse Creation and Replacement logic
+#### Implement Warehouse Creation, Replacement and Archive logic (Must have)
 
-Locate and implement the use cases for Creating, Replacing and Archiving a Warehouse. Following validations and constraints should be applied:
+Locate and implement the API endpoints handlers and Use Cases for all Warehouse related operations, like creating, retrieveing, replacing and archiving. 
+
+The following validations and constraints should be applied and a proper response should be returned to the users:
 
 **Business Unit Code Verification**
 
@@ -60,7 +62,7 @@ Ensure the new warehouse's capacity can accommodate the stock from the warehouse
 
 Confirm that the stock of the new warehouse matches the stock of the previous warehouse.
 
-## BONUS task
+## BONUS task (nice to have)
 
 Implement the feature of associating `Warehouses` as fullfilment units of certain `Products` to determined `Stores`.
 
