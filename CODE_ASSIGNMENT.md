@@ -26,7 +26,7 @@ Adjust the `StoreResource` operations to make sure that the `LegacyStoreManagerG
 
 If you check the `StoreResource` class and methods, you'll notice that it uses `LegacyStoreManagerGateway` instance. This is simulating an integration with a legacy system with which we are syncing the `Stores` register handled by our system. Although the initial implementation is working properly, we need an implementation that **guarantees** that the change to the `Store` entity is propagated only after it is effectively stored in our database.
 
-### 3. Warehouse
+### 3. Warehouse (Must have)
 
 > this code is located under package `com.fulfilment.application.monolith.warehouse`
 

@@ -1,6 +1,6 @@
 package com.fulfilment.application.monolith.warehouses.domain.models;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 public class Warehouse {
 
@@ -13,7 +13,7 @@ public class Warehouse {
 
   public Integer stock;
 
-  public ZonedDateTime creationAt;
+  public LocalDateTime createdAt;
 
-  public ZonedDateTime archivedAt;
+  public LocalDateTime archivedAt;
 }
