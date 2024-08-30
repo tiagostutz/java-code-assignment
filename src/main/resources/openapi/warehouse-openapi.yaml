@@ -67,6 +67,37 @@ paths:
         '404':
           description: Warehouse unit not found
 
+  /warehouse/{businessUnitCode}/replacement:
+    post:
+      summary: Replace the current active Warehouse
+      description: | 
+        Replaces the current active Warehouse identified by `businessUnitCode` unit by a new Warehouse provided in the request body
+        A Warehouse can be replaced by another Warehouse with the same Business Unit Code. 
+        That means that the previous Warehouse will be archived and the new Warehouse will be created assuming its place.
+      parameters:
+        - name: businessUnitCode
+          in: path
+          required: true
+          description: Business unit code of the warehouse unit to replace
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Warehouse'
+      responses:
+        '200':
+          description: Warehouse unit replaced
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Warehouse'
+        '404':
+          description: Warehouse unit not found
+        '400':
+          description: Invalid request parameters
 components:
   schemas:
     Warehouse:
@@ -75,9 +106,13 @@ components:
         id:
           type: string
           example: "456"
+        
+        businessUnitCode:
+          type: string
+          example: "MWH.001, MWH.002"
         location:
           type: string
-          example: "Aisle 1, Shelf 2"
+          example: "ZWOLLE-001, AMSTERDAM-002"
         capacity:
           type: integer
           example: 100

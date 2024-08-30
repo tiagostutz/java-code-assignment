@@ -16,7 +16,7 @@ Here we have 3 questions related to the code base for you to answer. It is not a
 
 ```
 ----
-3. Given that you have limited time and resources for implementing tests for this project, what would be your approach/plan implementing those? Why?
+3. Given the need to balance thorough testing with time and resource constraints, how would you prioritize and implement tests for this project? Which types of tests would you focus on, and how would you ensure test coverage remains effective over time?
 
 **Answer:**
 ```txt

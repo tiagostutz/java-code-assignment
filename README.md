@@ -79,3 +79,7 @@ Navigate to:
 <http://localhost:8080/index.html>
 
 Have fun, and join the team of contributors!
+
+## Troubleshooting
+
+Using **IntelliJ**, in case the generated code is not recognized and you have compilation failures, you may need to add `target/.../jaxrs` folder as "generated sources".
